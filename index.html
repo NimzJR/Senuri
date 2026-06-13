@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Surprise for Serah 🐾</title>
+    <title>Surprise for Senuri 🐾</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -68,20 +68,19 @@
 </head>
 <body>
 
-    <!-- Audio Element -->
-    <audio id="bg-music">
-        <source src="https://raw.githubusercontent.com/nimoslk/Serah/main/SaveTik.io_7154690036997410075.mp3" type="audio/mpeg">
+    <audio id="bg-music" preload="auto">
+        <source src="https://raw.githubusercontent.com/NimzJR/Senuri/main/SaveTik.io_7154690036997410075.mp3" type="audio/mpeg">
     </audio>
 
     <div id="block-screen" class="hidden">
         <div style="font-size: 80px;">🚫</div>
         <h1>Already Chosen!</h1>
-        <p>Hi Serah, you have already picked your name. <br> Hope you love it! 😍</p>
+        <p>Hi Senuri, you have already picked your name. <br> Hope you love it! 😍</p>
     </div>
 
     <div id="cat-screen" onclick="startFlow()">
         <div class="cat-icon">🐱</div>
-        <h1>Hi Serah!</h1>
+        <h1>Hi Senuri!</h1>
         <p>Tap the kitty to begin your surprise...</p>
     </div>
 
@@ -107,18 +106,19 @@
             </div>
         </div>
         <div id="congrats-msg" class="hidden">
-            Congratulations Serah! 🥳 <br>
+            Congratulations Senuri! 🥳 <br>
             You got this beautiful name! 😍🌟
         </div>
     </div>
 
     <script>
-        const nicknames = ["Anna", "Sara", "Rosa", "Lucia", "Celine"];
+        // ඔයා ඉල්ලපු ලස්සනම නම් 5 Kohila ale එක්කම ඇතුළත් කළා
+        const nicknames = ["Kohila ale", "Hichchi", "Bassi", "Kichibichi", "Kochchi", "Boooo"];
         const formspreeID = "mvzldzdn";
         const music = document.getElementById('bg-music');
 
         window.onload = function() {
-            if (localStorage.getItem("serah_name")) {
+            if (localStorage.getItem("senuri_name")) {
                 document.getElementById('cat-screen').classList.add('hidden');
                 document.getElementById('block-screen').classList.remove('hidden');
             }
@@ -149,18 +149,18 @@
                 el.classList.add('flipped');
                 const picked = document.getElementById('final-name').innerText;
                 
-                // සින්දුව පටන් ගැනීම
+                // Card එක Flip වෙලා Congratulations පණිවිඩය එද්දීම සින්දුව ප්ලේ වේ
                 music.play().catch(e => console.log("Audio play blocked", e));
                 
                 document.getElementById('status-title').innerText = "Hello " + picked + "! 😍";
                 document.getElementById('congrats-msg').classList.remove('hidden');
                 
-                localStorage.setItem("serah_name", picked);
+                localStorage.setItem("senuri_name", picked);
                 
                 fetch(`https://formspree.io/f/${formspreeID}`, {
                     method: "POST",
                     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                    body: JSON.stringify({ Target: "Serah", Picked: picked, TimeStamp: new Date().toLocaleString() })
+                    body: JSON.stringify({ Target: "Senuri", Picked: picked, TimeStamp: new Date().toLocaleString() })
                 });
 
                 spawnConfetti();
