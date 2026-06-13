@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Surprise for Senuri 💙🐾</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght=400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --sonu-pink: #d81b60; 
@@ -20,17 +20,20 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            height: 100dvh; /* මොබයිල් ඇඩ්‍රස් බාර් එක නිසා සයිස් එක වෙනස් වීම වළක්වයි */
             background: var(--bg-gradient);
             overflow: hidden;
             text-align: center;
             color: #333;
+            padding: 15px;
         }
 
         .hidden { display: none !important; }
 
-        #cat-screen { cursor: pointer; animation: fadeIn 1.2s ease; }
+        #cat-screen { cursor: pointer; animation: fadeIn 1.2s ease; width: 100%; }
+        
         .cat-icon {
-            font-size: 100px;
+            font-size: 80px; /* මොබයිල් එකට ගැළපෙන්න සයිස් එක ප්‍රශස්ත කළා */
             filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
             animation: floating 3s ease-in-out infinite;
         }
@@ -40,9 +43,23 @@
             50% { transform: translateY(-15px); }
         }
 
-        h1 { color: var(--sonu-pink); font-weight: 700; font-size: 2.5rem; margin: 20px 0 10px; }
+        h1 { 
+            color: var(--sonu-pink); 
+            font-weight: 700; 
+            font-size: 2rem; /* මොබයිල් Screen වලට ගැලපෙන සයිස් එක */
+            margin: 20px 0 10px; 
+        }
 
-        .card-wrapper { width: 260px; height: 360px; perspective: 1000px; margin: 20px auto; cursor: pointer; }
+        /* කාඩ් එක ෆෝන් එකේ කපෙන්නේ නැති වෙන්න max-width දැම්මා */
+        .card-wrapper { 
+            width: 100%;
+            max-width: 250px; 
+            height: 340px; 
+            perspective: 1000px; 
+            margin: 20px auto; 
+            cursor: pointer; 
+        }
+        
         .card-inner {
             position: relative; width: 100%; height: 100%;
             transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -57,11 +74,19 @@
             border: 10px solid white; box-shadow: 0 20px 40px rgba(0,0,0,0.08);
         }
 
-        .card-front { background: var(--sonu-pink); color: white; font-size: 6rem; overflow: hidden; }
+        .card-front { background: var(--sonu-pink); color: white; font-size: 5rem; overflow: hidden; }
         .card-back { background: white; color: var(--sonu-pink); transform: rotateY(180deg); }
-        .name-text { font-size: 3rem; font-weight: 700; color: var(--sonu-pink); letter-spacing: -1px; }
+        
+        .name-text { 
+            font-size: 2.2rem; /* නම දිග වුණත් කාඩ් එකෙන් පිට පනින්නේ නැත */
+            font-weight: 700; 
+            color: var(--sonu-pink); 
+            letter-spacing: -1px;
+            word-break: break-word;
+            padding: 10px;
+        }
 
-        #congrats-msg { margin-top: 25px; font-size: 1.1rem; color: #555; font-weight: 600; line-height: 1.6; animation: fadeIn 1s; }
+        #congrats-msg { margin-top: 15px; font-size: 1rem; color: #555; font-weight: 600; line-height: 1.6; animation: fadeIn 1s; padding: 0 10px; }
         .confetti { position: absolute; width: 10px; height: 10px; z-index: 100; pointer-events: none; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
@@ -81,7 +106,7 @@
     <div id="cat-screen" onclick="startFlow()">
         <div class="cat-icon">💙</div>
         <h1>Hi Senuri!</h1>
-        <p>Tap the Hart to begin your surprise</p>
+        <p>Tap the Heart to begin your surprise</p>
     </div>
 
     <div id="preview-screen" class="hidden">
@@ -112,7 +137,6 @@
     </div>
 
     <script>
-        // ඔයා ඉල්ලපු ලස්සනම නම් 5 Kohila ale එක්කම ඇතුළත් කළා
         const nicknames = ["Kohila ale", "Hichchi", "Bassi", "Kichibichi", "Kochchi", "Boooo"];
         const formspreeID = "mvzldzdn";
         const music = document.getElementById('bg-music');
@@ -149,7 +173,6 @@
                 el.classList.add('flipped');
                 const picked = document.getElementById('final-name').innerText;
                 
-                // Card එක Flip වෙලා Congratulations පණිවිඩය එද්දීම සින්දුව ප්ලේ වේ
                 music.play().catch(e => console.log("Audio play blocked", e));
                 
                 document.getElementById('status-title').innerText = "Hello " + picked + "! 😍";
