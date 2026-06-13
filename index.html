@@ -106,11 +106,11 @@
     <div id="cat-screen" onclick="startFlow()">
         <div class="cat-icon">💙</div>
         <h1>Hi Senuri!</h1>
-        <p>Tap the Heart to begin your surprise</p>
+        <p>Tap the Heart 💙🫠!</p>
     </div>
 
     <div id="preview-screen" class="hidden">
-        <p style="font-weight: 600; color: #777;">Remember these beautiful names... 💙</p>
+        <p style="font-weight: 600; color: #777;">Remember these beautiful names 💙</p>
         <div class="card-wrapper">
             <div class="card-inner">
                 <div class="card-front" style="background: white;">
@@ -175,7 +175,7 @@
                 
                 music.play().catch(e => console.log("Audio play blocked", e));
                 
-                document.getElementById('status-title').innerText = "Hello " + picked + "! 😍";
+                document.getElementById('status-title').innerText = "Hello " + picked + "! 😍💙";
                 document.getElementById('congrats-msg').classList.remove('hidden');
                 
                 localStorage.setItem("senuri_name", picked);
